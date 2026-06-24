@@ -1,0 +1,37 @@
+<odoo>
+    <record id="tourism_vehicle_type_action" model="ir.actions.act_window">
+        <field name="name">Vehicle Types</field>
+        <field name="res_model">tourism.vehicle.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="tourism_vehicle_type_view_list" model="ir.ui.view">
+        <field name="name">tourism.vehicle.type.list</field>
+        <field name="model">tourism.vehicle.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="tourism_vehicle_type_view_form" model="ir.ui.view">
+        <field name="name">tourism.vehicle.type.form</field>
+        <field name="model">tourism.vehicle.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <field name="vehicle_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="license_plate"/>
+                            <field name="capacity"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

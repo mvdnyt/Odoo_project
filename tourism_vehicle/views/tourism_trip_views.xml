@@ -1,0 +1,69 @@
+<odoo>
+    <record id="tourism_trip_action" model="ir.actions.act_window">
+        <field name="name">Trips</field>
+        <field name="res_model">tourism.trip</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="tourism_trip_view_list" model="ir.ui.view">
+        <field name="name">tourism.trip.list</field>
+        <field name="model">tourism.trip</field>
+        <field name="arch" type="xml">
+            <list
+                decoration-success="state == 'completed'"
+                decoration-info="state == 'ongoing'"
+                decoration-muted="state == 'cancelled'">
+                <field name="name"/>
+                <field name="trip_date"/>
+                <field name="destination"/>
+                <field name="vehicle_id"/>
+                <field name="passenger_count"/>
+                <field name="group_type"/>
+                <field name="vehicle_ownership"/>
+                <field name="commission_amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="tourism_trip_view_form" model="ir.ui.view">
+        <field name="name">tourism.trip.form</field>
+        <field name="model">tourism.trip</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="action_start_trip" type="object" string="Start Trip"
+                            invisible="state != 'scheduled'"/>
+                        <button name="action_complete_trip" type="object" string="Complete Trip"
+                            invisible="state != 'ongoing'"/>
+                        <button name="action_cancel_trip" type="object" string="Cancel"
+                            invisible="state in ('completed', 'cancelled')"/>
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="scheduled,ongoing,completed"
+                            options="{'clickable': true}"/>
+                    </header>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <field name="trip_date"/>
+                            <field name="destination"/>
+                            <field name="passenger_count"/>
+                            <field name="group_type"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_id"/>
+                            <field name="vehicle_capacity"/>
+                            <field name="vehicle_ownership"/>
+                            <field name="commission_amount" invisible="vehicle_ownership == 'internal'"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>
