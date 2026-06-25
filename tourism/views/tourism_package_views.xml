@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_tourism_package" model="ir.actions.act_window">
+        <field name="name">Tourism Desk</field>
+        <field name="res_model">tourism.package</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first tourism package!
+            </p>
+        </field>
+    </record>
+
+    <record id="tourism_package_view_list" model="ir.ui.view">
+        <field name="name">tourism.package.list</field>
+        <field name="model">tourism.package</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="package_type_id"/>
+                <field name="duration_days"/>
+                <field name="base_price"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="tourism_package_view_form" model="ir.ui.view">
+    <field name="name">tourism.package.form</field>
+    <field name="model">tourism.package</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <field name="image_1920" widget="image" class="oe_avatar"/>
+                
+                <group>
+                    <group string="Package Details">
+                        <field name="name"/>
+                        <field name="package_type_id" options="{'no_create': True}"/>
+                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                        <field name="hotel_star_rating"/>
+                        <field name="boarding_type"/>
+                    </group>
+                    
+                    <group string="Booking Information">
+                        <label for="date_start" string="Travel Range"/>
+                        <div class="o_row">
+                            <field name="date_start"/> to <field name="date_end"/>
+                        </div>
+                        <field name="passenger_count"/>
+                        <field name="contact_phone" widget="phone"/>
+                        <field name="contact_email" widget="email"/>
+                        <field name="base_price"/>
+                        <field name="duration_days"/>
+                    </group>
+                </group>
+
+                <notebook>
+                    <page string="Itinerary Timeline">
+                        <field name="itinerary_day_ids">
+                            <list editable="bottom">
+                                <field name="day_number"/>
+                                <field name="title"/>
+                                <field name="narrative"/>
+                                <field name="is_veg_friendly"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+    <record id="tourism_package_view_kanban" model="ir.ui.view">
+        <field name="name">tourism.package.kanban</field>
+        <field name="model">tourism.package</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="hotel_star_rating" class="o_kanban_small_column" records_draggable="false">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="base_price"/>
+                <field name="duration_days"/>
+                <field name="boarding_type"/>
+                <field name="image_1920"/>
+                <field name="tag_ids"/>
+                
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_card oe_kanban_global_click border-0 m-0 p-0" style="width: 100%; border-radius: 8px; overflow: hidden;">
+                            <div class="position-relative" style="height: 140px; background: #f8f9fa;">
+                                <t t-if="record.image_1920.raw_value">
+                                    <img t-att-src="'/web/image/tourism.package/' + record.id.raw_value + '/image_1920'" 
+                                         class="w-100 h-100" style="object-fit: cover;" alt="Package Image"/>
+                                </t>
+                                <t t-else="">
+                                    <div class="d-flex align-items-center justify-content-center h-100 w-100 bg-secondary text-white small text-uppercase">
+                                        No Image
+                                    </div>
+                                </t>
+                            </div>
+                            <div class="p-3">
+                                <h5 class="fw-bold text-dark text-truncate mb-2"><field name="name"/></h5>
+                                <div class="d-flex justify-content-between text-muted small my-2 border-bottom pb-2">
+                                    <span>⏳ <field name="duration_days"/> Days</span>
+                                    <span class="text-success fw-bold">
+                                        🍽️ <t t-out="record.boarding_type.raw_value == 'half' ? 'Half-Board' : 'Full-Board'"/>
+                                    </span>
+                                </div>
+                                <div class="mb-3">
+                                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-2 pt-2 border-top">
+                                    <span class="text-uppercase text-muted font-weight-bold" style="font-size: 0.75rem;">Base Cost</span>
+                                    <span class="text-primary fw-bold fs-5">AED <field name="base_price"/></span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

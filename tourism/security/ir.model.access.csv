@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tourism_package_user,tourism.package.user,model_tourism_package,base.group_user,1,1,1,0
+access_tourism_package_day_user,tourism.package.day.user,model_tourism_package_day,base.group_user,1,1,1,1
+access_tourism_package_type_user,tourism.package.type.user,model_tourism_package_type,base.group_user,1,1,1,0
+access_tourism_package_tag_user,tourism.package.tag.user,model_tourism_package_tag,base.group_user,1,1,1,0
+access_tourism_booking_user,tourism.booking.user,model_tourism_booking,base.group_user,1,1,1,1

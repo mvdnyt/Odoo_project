@@ -1,0 +1,28 @@
+<odoo>
+    <!-- list VIEW: Simple List Table with Drag-and-Drop Sequence Sorting -->
+    <record id="tourism_package_type_view_list" model="ir.ui.view">
+        <field name="name">tourism.package.type.list</field>
+        <field name="model">tourism.package.type</field>
+        <field name="arch" type="xml">
+            <list string="Package Types" editable="bottom" sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- WINDOW ACTION TRIGGER -->
+    <record id="tourism_package_type_action" model="ir.actions.act_window">
+        <field name="name">Package Classifications</field>
+        <field name="res_model">tourism.package.type</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- MENU ITEM: Sub-menu under Configuration -->
+    <menuitem id="menu_tourism_package_type"
+              name="Package Types"
+              parent="menu_tourism_configuration_parent"
+              action="tourism_package_type_action"
+              sequence="10"/>
+</odoo>

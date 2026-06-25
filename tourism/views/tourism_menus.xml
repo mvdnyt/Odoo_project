@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_tourism_root"
+              name="Tourism Desk"
+              action="action_tourism_package"
+              sequence="10"
+              web_icon="tourism,static/description/icon.png"/>
+
+    <menuitem id="menu_tourism_bookings_parent"
+              name="Operations"
+              parent="menu_tourism_root"
+              sequence="10"/>
+
+    <menuitem id="menu_tourism_configuration_parent"
+              name="Configuration"
+              parent="menu_tourism_root"
+              sequence="20"/>
+</odoo>
