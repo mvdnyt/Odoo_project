@@ -19,10 +19,5 @@
         <field name="view_mode">list</field>
     </record>
 
-    <!-- MENU ITEM: Sub-menu under Configuration -->
-    <menuitem id="menu_tourism_package_type"
-              name="Package Types"
-              parent="menu_tourism_configuration_parent"
-              action="tourism_package_type_action"
-              sequence="10"/>
+
 </odoo>

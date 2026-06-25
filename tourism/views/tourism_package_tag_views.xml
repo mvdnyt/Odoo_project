@@ -19,10 +19,5 @@
         <field name="view_mode">list</field>
     </record>
 
-    <!-- MENU ITEM: Sub-menu under Configuration -->
-    <menuitem id="menu_tourism_package_tag"
-              name="Marketing Badges"
-              parent="menu_tourism_configuration_parent"
-              action="tourism_package_tag_action"
-              sequence="20"/>
+
 </odoo>

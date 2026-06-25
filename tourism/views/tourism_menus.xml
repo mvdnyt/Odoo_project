@@ -15,4 +15,22 @@
               name="Configuration"
               parent="menu_tourism_root"
               sequence="20"/>
+
+    <menuitem id="menu_tourism_booking"
+              name="Customer Bookings"
+              parent="menu_tourism_bookings_parent"
+              action="tourism_booking_action"
+              sequence="1"/>
+
+    <menuitem id="menu_tourism_package_type"
+              name="Package Types"
+              parent="menu_tourism_configuration_parent"
+              action="tourism_package_type_action"
+              sequence="10"/>
+
+    <menuitem id="menu_tourism_package_tag"
+              name="Marketing Badges"
+              parent="menu_tourism_configuration_parent"
+              action="tourism_package_tag_action"
+              sequence="20"/>
 </odoo>
