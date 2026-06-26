@@ -1,1 +1,1 @@
-from . import tourism_booking_account
+from . import tourism_booking
