@@ -82,7 +82,10 @@ Search "Dubai Tourism" → Install
 Optionally enable demo data for pre-loaded sample records
 
 <h2>📁 Repository Structure</h2>
-```
+
+📁 Repository Structure
+
+\```
 ├── dubai_tourism/          # Core tourism module
 │   ├── models/             # Business logic
 │   ├── views/              # UI definitions
@@ -94,4 +97,4 @@ Optionally enable demo data for pre-loaded sample records
 │   └── controllers/        # Portal controllers
 ├── tourism_accounts/       # Accounting integration module
 └── README.md
-```
+\```
